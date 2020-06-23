@@ -21,7 +21,7 @@ app.use(koaBody({
   formidable: {
     uploadDir: path.join(__dirname, './public/upload/'), // 设置文件上传目录
     keepExtensions: true, // 保持文件的后缀
-    maxFieldsSize: 2 * 1024 * 1024 // 文件上传大小
+    maxFieldsSize: 5 * 1024 * 1024 // 文件上传大小
   }
 }))
 
@@ -43,7 +43,7 @@ app.use(cors())
 
 router.get('/', (ctx, next) => {
   // ctx.router available
-  ctx.body = 'Hello ChartFun!'
+  ctx.body = 'Hello datav-easy!'
 })
 
 app.use(apiRouter.routes()).use(apiRouter.allowedMethods())

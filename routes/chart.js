@@ -1,3 +1,5 @@
+
+
 const Router = require('koa-router')
 const chartModel = require('../models/chart')
 
@@ -57,9 +59,9 @@ router.post('/', async (ctx, next) => {
     uid: body.uid,
     view: 0,
     chartData: {
-      w: 1200,
-      h: 800,
-      bgcolor: '#999999',
+      w: 1920,
+      h: 1080,
+      bgcolor: '#000000',
       bgimage: '',
       bgimagesize: 'cover',
       elements: []
