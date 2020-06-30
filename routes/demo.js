@@ -5,6 +5,14 @@ const Router = require('koa-router')
 const router = new Router()
 router.prefix('/demo')
 
+
+router.get('/line', async (ctx, next) => {
+  ctx.body = {
+    Legend : ['类目一', '类目二'],
+    series: [{ name: '类目一', data: [['1年内', 27], ['1-5年内', 46], ['5-10年内', 30], ['10年以上', 45]] }, { name: '类目二', data: [['1年内', 40], ['1-5年内', 30], ['5-10年内', 28], ['10年以上', 35]] }]
+  }
+})
+
 // 返回一个随机
 router.get('/percent', async (ctx, next) => {
   ctx.body = {

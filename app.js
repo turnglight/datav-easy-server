@@ -21,12 +21,17 @@ app.use(koaBody({
   formidable: {
     uploadDir: path.join(__dirname, './public/upload/'), // 设置文件上传目录
     keepExtensions: true, // 保持文件的后缀
-    maxFieldsSize: 5 * 1024 * 1024 // 文件上传大小
-  }
+    maxFieldsSize: 5 * 1024 * 1024, // 文件上传大小
+    multipart: true
+  },
+  formLimit: "10mb",
+  jsonLimit: "10mb",
+  textLimit: "10mb",
+  enableTypes: ['json', 'form', 'text']
 }))
 
 // 连接数据库
-mongoose.connect('mongodb://localhost:27017/datav', { useNewUrlParser: true }, err => {
+mongoose.connect('mongodb://localhost:27777/datav', { useNewUrlParser: true }, err => {
   if (err) {
     console.log('[server] MongoDB connect error: ' + err)
   } else {
@@ -52,4 +57,5 @@ app.use(chartRouter.routes()).use(chartRouter.allowedMethods())
 app.use(connectRouter.routes()).use(connectRouter.allowedMethods())
 app.use(demoRouter.routes()).use(demoRouter.allowedMethods())
 app.use(router.routes()).use(router.allowedMethods())
-app.listen(3000)
+const server = app.listen(3000)
+server.setTimeout(5 * 60 * 1000)

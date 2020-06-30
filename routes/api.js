@@ -9,12 +9,14 @@ router.post('/uploadfile', async (ctx, next) => {
   let filePath = upload.uploadFile(ctx);
   if (filePath) {
     ctx.body = {
+      success: true,
       url: filePath,
       message: '文件上传成功',
       code: '0',
     }
   } else {
     ctx.body = {
+      success: false,
       url: filePath,
       message: '文件上传失败',
       code: '1',
