@@ -39,6 +39,7 @@ const router = new Router()
 app.use(koaStatic(
   path.join(__dirname, './public')
 ))
+
 app.use(cors())
 
 router.get('/', (ctx, next) => {
@@ -52,4 +53,3 @@ app.use(chartRouter.routes()).use(chartRouter.allowedMethods())
 app.use(connectRouter.routes()).use(connectRouter.allowedMethods())
 app.use(demoRouter.routes()).use(demoRouter.allowedMethods())
 app.use(router.routes()).use(router.allowedMethods())
-app.listen(3000)
